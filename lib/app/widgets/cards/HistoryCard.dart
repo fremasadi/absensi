@@ -53,7 +53,7 @@ class HistoryCard extends StatelessWidget {
             ),
             // Status Absensi
             Text(
-              'Absence Status : $statusAbsen',
+              'Status Absen  : $statusAbsen',
               style: TextStyle(
                 fontSize: 12.sp,
                 fontFamily: 'SemiBold',
@@ -62,7 +62,7 @@ class HistoryCard extends StatelessWidget {
             ),
             // Waktu Absensi
             Text(
-              'Check-In Time : $waktuAbsen',
+              'Jam Absen : $waktuAbsen',
               style: TextStyle(
                 fontFamily: 'Bold',
                 fontSize: 10.sp,
@@ -70,7 +70,7 @@ class HistoryCard extends StatelessWidget {
               ),
             ),
             Text(
-              'Check-In Location : $locationAbsen',
+              'Lokasi Absen : $locationAbsen',
               style: TextStyle(
                 fontFamily: 'Bold',
                 fontSize: 10.sp,

@@ -119,8 +119,8 @@ class HistoryController extends GetxController {
 
     if (selectedMonth.isAfter(currentDate)) {
       Get.snackbar(
-        'Excuse me',
-        'Not yet entered the month you selected.',
+        'Maaf Sekali',
+        'Belum memasuki bulan yang Anda pilih.',
         snackPosition: SnackPosition.TOP,
         backgroundColor: Colors.red,
         colorText: Colors.white,

@@ -4,7 +4,6 @@ import 'package:absensi/app/style/app_color.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginController extends GetxController with SingleGetTickerProviderMixin {
   final emailController = TextEditingController();
@@ -30,23 +29,6 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
     startAnimation();
     emailController.addListener(_onEmailChanged);
     passwordController.addListener(_onPasswordChanged);
-
-    _checkIfLoggedIn();
-  }
-
-  @override
-  void onClose() {
-    emailController.removeListener(_onEmailChanged);
-    passwordController.removeListener(_onPasswordChanged);
-
-    // Debugging print statement
-    print('Disposing emailController');
-    emailController.dispose();
-
-    print('Disposing passwordController');
-    passwordController.dispose();
-
-    super.onClose();
   }
 
   void _onEmailChanged() {
@@ -83,8 +65,7 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
 
       if (userCredential.user != null) {
         userId.value = userCredential.user!.uid;
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-        await prefs.setString('userId', userId.value);
+
         Get.offAllNamed('/base', arguments: userId.value);
       }
     } on FirebaseAuthException catch (e) {
@@ -113,23 +94,6 @@ class LoginController extends GetxController with SingleGetTickerProviderMixin {
     } finally {
       isLoading.value = false;
     }
-  }
-
-  Future<void> _checkIfLoggedIn() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? savedUserId = prefs.getString('userId');
-
-    if (savedUserId != null) {
-      // User is already logged in, navigate to base page
-      Get.offAllNamed('/base', arguments: savedUserId);
-    }
-  }
-
-  Future<void> signOut() async {
-    await _auth.signOut();
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.remove('userId');
-    Get.offAllNamed('/login'); // Redirect to login page after signing out
   }
 
   void startAnimation() {

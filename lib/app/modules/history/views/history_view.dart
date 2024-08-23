@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
@@ -15,6 +16,8 @@ class HistoryView extends GetView<HistoryController> {
   @override
   Widget build(BuildContext context) {
     controller.initialize();
+    initializeDateFormatting('id_ID', null);
+
     return Scaffold(
       body: Obx(
         () => controller.isView.isFalse
@@ -70,7 +73,8 @@ class HistoryView extends GetView<HistoryController> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        DateFormat('MMMM').format(month),
+                                        DateFormat('MMMM', 'id_ID')
+                                            .format(month),
                                         style: TextStyle(
                                           fontSize: 12.sp,
                                           fontWeight: FontWeight.bold,
@@ -81,7 +85,8 @@ class HistoryView extends GetView<HistoryController> {
                                         ),
                                       ),
                                       Text(
-                                        DateFormat('yyyy').format(month),
+                                        DateFormat('yyyy', 'id_ID')
+                                            .format(month),
                                         style: TextStyle(
                                           fontSize: 10.sp,
                                           color: index ==
@@ -114,7 +119,7 @@ class HistoryView extends GetView<HistoryController> {
                             } else if (controller.filteredAbsensi.isEmpty) {
                               return Center(
                                 child: Text(
-                                  'Data for this month is missing',
+                                  'Data Pada Bulan Ini Kosong',
                                   style: TextStyle(
                                     fontSize: 16.sp,
                                     fontFamily: 'SemiBold',
@@ -133,7 +138,7 @@ class HistoryView extends GetView<HistoryController> {
                                     date: absensi['waktuAbsen'],
                                     statusAbsen: absensi['statusAbsen']!,
                                     waktuAbsen: absensi['jamAbsen']!,
-                                    keterangan: 'Successfully Checked In',
+                                    keterangan: 'Berhasil Absen',
                                     locationAbsen: absensi['lokasiAbsen'],
                                   );
                                 },

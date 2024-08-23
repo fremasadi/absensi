@@ -29,7 +29,7 @@ class BaseController extends GetxController {
     await _auth.signOut();
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.remove('userId');
-    Get.offAllNamed('/login'); // Redirect to login page after signing out
+    Get.offAllNamed('/splash'); // Redirect to login page after signing out
   }
 
   void onTabTapped(int index) {

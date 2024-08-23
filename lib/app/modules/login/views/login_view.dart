@@ -43,7 +43,7 @@ class LoginView extends GetView<LoginController> {
                           Padding(
                             padding: EdgeInsets.symmetric(vertical: 8.0.sp),
                             child: Text(
-                              'Freecode attendance',
+                              'Absen Freecode',
                               style: TextStyle(
                                 fontSize: 20.sp,
                                 fontFamily: 'SemiBold',
@@ -160,7 +160,7 @@ class LoginView extends GetView<LoginController> {
                                               .trim(),
                                         );
                                       },
-                                      title: 'Login',
+                                      title: 'Masuk',
                                       textStyle: TextStyle(
                                         fontSize: 14.sp,
                                         fontFamily: 'SemiBold',
@@ -173,6 +173,18 @@ class LoginView extends GetView<LoginController> {
                                     ),
                             ),
                           ),
+                          TextButton(
+                            onPressed: () {
+                              Get.toNamed(Routes.SIGNUP);
+                            },
+                            child: Text(
+                              'Daftar',
+                              style: TextStyle(
+                                fontFamily: 'Medium',
+                                fontSize: 12.sp,
+                              ),
+                            ),
+                          )
                         ],
                       ),
                     ),

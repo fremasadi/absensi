@@ -4,6 +4,7 @@ import '../../../style/app_color.dart';
 
 class ProfileController extends GetxController {
   final DatabaseReference _database = FirebaseDatabase.instance.reference();
+  var isLoading = true.obs;
   RxString email = ''.obs;
   RxString instansi = ''.obs;
   RxString jabatan = ''.obs;
@@ -23,17 +24,17 @@ class ProfileController extends GetxController {
       DataSnapshot snapshot = event.snapshot;
 
       if (snapshot.exists) {
-        final data = snapshot.value as Map<dynamic, dynamic>;
-        print('Data fetched: $data'); // Tambahkan log ini untuk debug
+        await Future.delayed(const Duration(seconds: 5));
+        isLoading.value = false;
 
+        final data = snapshot.value as Map<dynamic, dynamic>;
         email.value = data['email'] ?? '';
         instansi.value = data['instansi'] ?? '';
         jabatan.value = data['jabatan'] ?? '';
         kantor.value = data['kantor'] ?? '';
         nama.value = data['nama'] ?? '';
         profileImageUrl.value = data['profileImageUrl'] ?? '';
-        print(
-            '$profileImageUrl iniadalah imgProfileUrk saya di profile controller'); // Mengambil URL gambar profil
+        // Mengambil URL gambar profil
       } else {
         Get.snackbar(
           'Error',
@@ -49,7 +50,7 @@ class ProfileController extends GetxController {
         backgroundColor: AppColor.pink,
         colorText: AppColor.white,
       );
-      print('Error fetching user profile: $e'); // Log error untuk debug
+      // Log error untuk debug
     }
   }
 }

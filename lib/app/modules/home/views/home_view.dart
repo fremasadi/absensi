@@ -133,11 +133,11 @@ class HomeView extends GetView<HomeController> {
                       children: [
                         Center(
                           child: Text(
-                            'Absen Tutup Pukul 10 Pagi',
+                            'Absen Pukul 6 Pagi - 10 Pagi',
                             style: TextStyle(
                               fontSize: 12.sp,
                               fontFamily: 'SemiBold',
-                              color: AppColor.primary,
+                              color: Colors.red,
                             ),
                           ),
                         ),
