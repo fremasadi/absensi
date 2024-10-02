@@ -2,6 +2,15 @@
 
 Absensi App adalah aplikasi absensi berbasis **Flutter** yang memungkinkan pengguna untuk melakukan absensi dengan menggunakan **track location** (berbasis GPS), mengambil foto sebagai bukti kehadiran, dan mencatat status absensi seperti **Sakit**, **Masuk**, atau **Ijin**. Aplikasi ini juga memiliki fitur **riwayat absensi** serta halaman **profil pengguna**. Dibangun menggunakan **GetX** untuk manajemen state dan navigasi, **Firebase** sebagai backend, dan **Google Maps API** untuk pelacakan lokasi.
 
+## Demo Video
+
+Lihat video demo aplikasi Absensi di YouTube:
+
+[![Demo Video](https://img.youtube.com/vi/uYqKj1lGAoQ/0.jpg)](https://youtu.be/uYqKj1lGAoQ)
+
+Klik pada gambar di atas atau kunjungi langsung [Demo Video YouTube](https://youtu.be/uYqKj1lGAoQ).
+
+
 ## Fitur
 
 - **Absensi dengan Lokasi**: Pengguna dapat melakukan absensi dengan verifikasi lokasi menggunakan Google Maps API.
