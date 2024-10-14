@@ -1,8 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'app/data/services/firebase_api.dart';
 import 'app/routes/app_pages.dart';
 import 'app/style/app_color.dart';
 
@@ -13,11 +15,15 @@ void main() async {
         apiKey: 'AIzaSyBy38pDp23wpl9jdiskTIal94RoXPXPWBQ',
         appId: '1:880634012461:android:c5ba1a95c1166f1672e9a4',
         projectId: 'absensi-9da95',
-        messagingSenderId: '',
+        messagingSenderId: '880634012461',
         storageBucket: 'gs://absensi-9da95.appspot.com'),
   );
   runApp(const MyApp());
+  await FirebaseApi().initNotifications();
+
 }
+
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
